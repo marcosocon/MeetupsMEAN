@@ -1,6 +1,6 @@
 var express                  = require('express'),
-    app                      = express(),  
-    mongoose                 = require('mongoose'),  
+    app                      = express(),
+    mongoose                 = require('mongoose'),
     bodyParser               = require('body-parser'),
     meetupsController        = require('./server/controllers/meetups-controller');
 
@@ -15,6 +15,9 @@ app.get('/', function(req,res){
 app.use('/js', express.static( __dirname + '/client/js'));
 
 app.post('/api/meetups', meetupsController.create);
+
+app.get('/api/meetups', meetupsController.list);
+
 
 app.listen(3000, function(){
   console.log("im listening..in port :3000");
